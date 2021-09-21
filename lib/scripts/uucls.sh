@@ -19,7 +19,7 @@ MANIFEST=".uucls"
 SCRIPT_REPO="lib/scripts/uucls.sh"
 SCRIPT_LOCAL="/usr/local/bin/uucls"
 
-REMOTE="/home/jkorbmacher/Dropbox/lib/uucls"
+REMOTE="https://github.com/UtrechtUniversity/uucls.git"
 
 _check_for_dependencies_() {
 
