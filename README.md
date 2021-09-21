@@ -1,4 +1,4 @@
-# uucls --- LaTeX classes for the UU house style
+# uucls - LaTeX classes for the UU house style
 
 This is a library of latex classes for creating documents according to the [Utrecht University style guide](https://www.uu.nl/en/organisation/corporate-identity). 
 Currently, the package contains: 
@@ -29,9 +29,12 @@ If you're on MacOS/Linux, you can use the shell script included in the project t
 
 ``` shell
 
-/bin/bash -c "$(curl -fsSL $URL) install" 
+  git clone https://github.com/UtrechtUniversity/uucls.git && ./uucls/lib/scripts/uucls.sh install
 
 ```
+
+**Note**: You can `rm -rf uucls` afterwards to delete the cloned repo (it was cloned just for the install anyways).
+A nicer `curl` implementation is currently not possible since this is an internal repo.
 
 Before you do this, please inspect the script under `lib/script/uucls.sh` (as a matter of principle, don't just run scripts from the internet).
 It assumes that you have `git` and either MacTeX or TeXlive installed.
