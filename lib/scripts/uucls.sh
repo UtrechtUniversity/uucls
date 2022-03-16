@@ -23,7 +23,7 @@ REMOTE="https://github.com/UtrechtUniversity/uucls.git"
 
 _check_for_dependencies_() {
 
-    if [[ ! $(command -v kpsepath) ]]; then
+    if [[ ! $(command -v kpsewhich) ]]; then
         echo "Kpathsea not found in PATH. Is LaTeX installed?"
         exit 1
     elif [[ ! $(command -v git) ]]; then
