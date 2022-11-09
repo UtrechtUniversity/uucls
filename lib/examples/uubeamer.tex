@@ -1,0 +1,108 @@
+\documentclass[10pt]{beamer}
+
+% Needed for the pie chart below
+\usepackage{pgf-pie}  
+
+
+\usetheme[]{uubeamer}
+% Use this option for a white title slide
+% \usetheme[white]{uubeamer}
+
+\title{Open blik, open houding, open wetenschap}
+
+\author{Naam}
+\institute{functie}
+
+% Displayed on the title slide
+\headline{EDIT SOURCE TO INSERT HEADLINE}
+
+% Displayed in the footer on each slide after the title slide
+\footline{Edit source to add footline}
+
+% Shown on the disclaimer slide, e.g. to thank funding sources...
+\disclaimer{Edit source to add disclaimer}
+
+% You can add as many partnerlogos as you like. They will be re-scaled, grouped
+% in threes, and put in a table on the disclaimers slide.
+\partnerlogos{partner.png}{partner.png}{partner.png}{partner.png}{partner.png}%...
+
+\date{8-11-2022}
+% \date{8 November 2022}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{A sample slide\dots}
+
+  Here are some bullet points:
+
+  \begin{itemize}
+    \item An item
+    \item Another item
+    \item Yet another item
+    \item \dots
+  \end{itemize}
+
+  And here a number of important things:
+
+  \begin{enumerate}
+    \item Something important
+    \item Something importanter
+    \item \dots
+  \end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Some math\dots}
+
+\begin{theorem}[Rolle]
+  Let $f:[a,b]\to\mathbb{R}$ be continuous, differiantable on $(a,b)$, and
+  $f(a)=f(b)$. Then there exists a $c\in (a,b)$ such that:
+  \[f'(c)=0\]
+\end{theorem}
+
+\begin{proof}
+We consider two cases:
+
+\begin{itemize}
+  \item Case 1: $f(x)=0$ for all $x\in [a,b]$. The claim then follows since the
+    derivatives of constant functions are always zero.
+  \item Case 2: $f(x)\neq 0$ for some $x\in(a,b)$. By the EVT, $f$ takes its
+    maximum and minimum value on $[a,b]$. \dots
+\end{itemize}
+
+
+\end{proof}
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{A pie chart with UU colors\dots}
+
+  \begin{center}
+    \begin{tikzpicture}
+
+      \pie[color={uu-yellow,  uu-cream, uu-orange, uu-burgundy, uu-brown, uu-green,
+      uu-blue, uu-dark-blue, uu-purple},
+      text=legend, sum=auto, hide number]{%
+        8.2/Category 1,
+        3.2/Category 2,
+        1.4/Category 3,
+        1.2/Category 4,
+        3.0/Category 5,
+        2.0/Category 6,
+        1.0/Category 7,
+        0.5/Category 8,
+        3.0/Category 9
+      }
+
+    \end{tikzpicture}
+  \end{center}
+
+\end{frame}
+
+\end{document}
