@@ -1,0 +1,100 @@
+% uubeamer - Outer theme
+%
+% Copyright 2022, J. Korbmacher (j.korbmacher@uu.nl)
+%
+% License: MIT
+%
+% DISCLAIMER
+%
+% The UU-house style is protected by copyright, with Utrecht University having
+% the right of use. This is why the house style cannot be used and/or applied by
+% third parties without permission granted in advance.
+%
+\newif\if@dutch
+\newif\if@white
+\@whitefalse
+\DeclareOptionBeamer{english}{\@dutchfalse}
+\DeclareOptionBeamer{dutch}{\@dutchtrue}
+\DeclareOptionBeamer{white}{\@whitetrue}
+\ProcessOptionsBeamer
+\newcommand{\@insertfootline}{}
+\newcommand{\footline}[1]{%
+  \renewcommand\@insertfootline{#1}
+}
+\newcommand{\@titlelogopath}{}
+\newcommand{\@logopath}{}
+\newcommand{\@payoffpath}{}
+\mode<presentation>
+\if@dutch
+  \renewcommand{\@logopath}{UU_logo_2021_NL_ZWART.png}
+  \if@white
+    \renewcommand{\@titlelogopath}{UU_logo_2021_NL_RGB.png}
+  \else
+    \renewcommand{\@titlelogopath}{UU_logo_2021_NL_ZWART.png}
+  \fi
+\else
+  \renewcommand{\@logopath}{UU_logo_2021_EN_BLACK.png}
+  \if@white
+    \renewcommand{\@titlelogopath}{UU_logo_2021_EN_RGB.png}
+  \else
+    \renewcommand{\@titlelogopath}{UU_logo_2021_EN_BLACK.png}
+  \fi
+\fi
+\if@dutch
+  \renewcommand{\@payoffpath}{UU_logo_2021_NL_ZWART_payoff.png}
+\else
+  \renewcommand{\@payoffpath}{UU_logo_2021_EN_BLACK_payoff.png}
+\fi
+\newcommand{\@print@logo}{%
+    \IfFileExists{\@logopath}{\includegraphics{\@logopath}}{%
+      \fbox{Warning! Logo not found.}
+      \ClassWarning{uubeamer}{Couldn't locate the logo file. Put
+        it somewhere where LaTeX can find it.}}
+      }
+\newcommand{\@print@titlelogo}{%
+  \IfFileExists{\@titlelogopath}{\includegraphics[width=.5\linewidth]{\@titlelogopath}}{%
+      \fbox{Warning! Logo not found.}
+      \ClassWarning{uubeamer}{Couldn't locate the logo file. Put
+        it somewhere where LaTeX can find it.}}
+      }
+\newcommand{\@print@payoff}{%
+  \IfFileExists{\@payoffpath}{\includegraphics[scale=0.5]{\@payoffpath}}{%
+      \fbox{Warning! Payoff not found.}
+      \ClassWarning{uubeamer}{Couldn't locate the logo file. Put
+        it somewhere where LaTeX can find it.}}
+      }
+\setbeamersize{%
+  text margin left=0.1\paperwidth,%
+  text margin right=0.1\paperwidth
+}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{%
+    \begingroup
+    \begin{minipage}[c][5\baselineskip][c]{0.35\linewidth}
+      \hfuzz=\maxdimen
+      \hbadness=100000
+      \includegraphics[scale=0.2]{\@titlelogopath}
+    \end{minipage}
+    \qquad
+    \begin{minipage}[t][\baselineskip][t]{0.5\linewidth}
+      \begin{flushright}
+          \@insertfootline
+      \end{flushright}
+    \end{minipage}
+    \qquad\qquad
+    \begin{minipage}[t][\baselineskip][t]{0.15\linewidth}
+        \begin{center}
+        \insertdate
+      \end{center}
+    \end{minipage}
+    \qquad\qquad
+    \begin{minipage}[t][\baselineskip][t]{0.01\linewidth}
+      \begin{flushright}
+        \insertframenumber
+      \end{flushright}
+    \end{minipage}
+    \endgroup
+}
+\mode
+<all>

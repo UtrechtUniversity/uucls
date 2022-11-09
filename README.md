@@ -5,6 +5,7 @@ Currently, the package contains:
 
 + `lib/classes/uuletter2.cls` - a letter class that implements the [UU template](https://www.uu.nl/en/organisation/corporate-identity/downloads/letter)
 + `lib/classes/uureport.cls` - a wrapper around the standard report class that typesets a [UU report](https://www.uu.nl/en/organisation/corporate-identity/downloads/word-document)
++ `lib/classes/beamerthemeuubeamer.sty` - a beamer template that implements the [UU Powerpoint/Keynote templates](https://www.uu.nl/en/organisation/corporate-identity/downloads/powerpoint-keynote). This depends on the files `lib/classes/beamerouterthemeuubeamer.sty`, `lib/classes/beamerinnerthemeuubeamer.sty`, `lib/classes/beamerfontthemeuubeamer.sty`, and `lib/classes/beamercolorthemeuubeamer.sty` (see the documentation on `beamer` themes).
 
 I plan to implement at least one more class, `uuarticle.cls`, but there's no timeline yet.
 

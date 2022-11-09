@@ -1,0 +1,37 @@
+% uubeamer - Font theme
+%
+% UU fonts (https://www.uu.nl/en/organisation/corporate-identity/brand-policy/fonts)
+%
+% Copyright 2022, J. Korbmacher (j.korbmacher@uu.nl)
+%
+% License: MIT
+%
+% DISCLAIMER
+%
+% The UU-house style is protected by copyright, with Utrecht University having
+% the right of use. This is why the house style cannot be used and/or applied by
+% third parties without permission granted in advance.
+%
+\mode<presentation>
+\newif\if@opensans
+\newif\if@merriweather
+\DeclareOptionBeamer{opensans}{\@opensanstrue}
+\DeclareOptionBeamer{merriweather}{\@merriweathertrue}
+\ProcessOptionsBeamer
+\relax
+\if@merriweather
+  \RequirePackage{merriweather}
+\else
+  \if@opensans
+    \RequirePackage[rm]{merriweather}
+    \RequirePackage[defaultsans]{opensans}
+  \else
+    \relax
+  \fi
+\fi
+\setbeamerfont*{title}{shape=\itshape,family=\rmfamily,size=\LARGE}
+\setbeamerfont*{author}{series=\bfseries}
+\setbeamerfont*{title page}{size=\scriptsize}
+\setbeamerfont*{frametitle}{series=\bfseries,size=\Large}
+\mode
+<all>

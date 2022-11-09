@@ -1,0 +1,56 @@
+% uubeamer - Color theme
+%
+% UU colors (https://www.uu.nl/en/organisation/corporate-identity/brand-policy/colour)
+%
+% Copyright 2022, J. Korbmacher (j.korbmacher@uu.nl)
+%
+% License: MIT
+%
+% DISCLAIMER
+%
+% The UU-house style is protected by copyright, with Utrecht University having
+% the right of use. This is why the house style cannot be used and/or applied by
+% third parties without permission granted in advance.
+%
+\mode<presentation>
+\newif\if@white
+\@whitefalse
+\DeclareOptionBeamer{white}{\@whitetrue}
+\ProcessOptionsBeamer
+\RequirePackage{tikz}
+% Primary colors
+\definecolor{uu-yellow} {RGB} {255,205,0}
+\definecolor{uu-red}    {RGB} {192,10,53}
+\definecolor{uu-black}  {RGB} {0,0,0}
+\definecolor{uu-white}  {RGB} {255,255,255}
+% Secondary colors
+\definecolor{uu-cream}     {RGB} {250,230,171}
+\definecolor{uu-orange}    {RGB} {243,150,94}
+\definecolor{uu-burgundy}  {RGB} {170,21,85}
+\definecolor{uu-brown}     {RGB} {110,59,35}
+\definecolor{uu-green}     {RGB} {36,167,147}
+\definecolor{uu-blue}      {RGB} {82,135,198}
+\definecolor{uu-dark-blue} {RGB} {0,18,64}
+\definecolor{uu-purple}    {RGB} {91,33,130}
+\setbeamercolor*{structure}{fg=uu-black}
+%
+% TODO Color palette
+%
+% The background on the title page is painted in uu-yellow using tikz:
+%
+% https://tex.stackexchange.com/questions/617969/beamer-how-to-set-background-color-only-on-title-page-in-theme
+%
+% This requires the color-theme to be leaded after the inner-theme!
+%
+\if@white
+  \relax
+\else
+  \addtobeamertemplate{title page}{%
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=uu-yellow] (current page.south west) rectangle
+      (current page.north east);
+    \end{tikzpicture}%
+  }{}
+\fi
+\mode
+<all>

@@ -1,0 +1,192 @@
+% uubeamer - Inner theme
+%
+% Copyright 2022, J. Korbmacher (j.korbmacher@uu.nl)
+%
+% License: MIT
+%
+% DISCLAIMER
+%
+% The UU-house style is protected by copyright, with Utrecht University having
+% the right of use. This is why the house style cannot be used and/or applied by
+% third parties without permission granted in advance.
+%
+\mode<presentation>
+\newtoks\@logotoks
+\@logotoks         = {}
+\long\def\@addtotoks#1#2{%
+  \global#2 = \expandafter{\the#2#1}}
+\newif\if@white
+\@whitefalse
+\newif\if@nodisclaimer
+\@nodisclaimerfalse
+\newcount\@test
+\newcount\partnerlogocount
+\newcount\index
+\partnerlogocount=0
+\newcommand{\partnerlogos}[1]{%
+    \advance\partnerlogocount 1
+    \expandafter\def\csname partnerlogo\number\partnerlogocount\endcsname{#1}
+    \@ifnextchar\bgroup{\partnerlogos}{\relax}
+  }
+\newcommand{\insertheadline}{}
+\newcommand{\headline}[1]{%
+  \renewcommand\insertheadline{%
+    \if@white
+      {\color{uu-red}#1}
+    \else
+    #1
+    \fi
+  }
+}
+\newcommand{\insertdisclaimer}{}
+\newcommand{\disclaimer}[1]{%
+  \renewcommand\insertdisclaimer{\tiny #1}
+}
+\DeclareOptionBeamer{nodisclaimer}{\@nodisclaimertrue}    
+\DeclareOptionBeamer{white}{\@whitetrue}    
+\ProcessOptionsBeamer
+\def\ps@uuslides@titlepage{%
+  \setbeamertemplate{headline}{}
+  \setbeamertemplate{footline}{}
+  \setbeamertemplate{navigation symbols}{}
+  \@nameuse{ps@uuslides}}
+\def\ps@uuslides@disclaimer{%
+  \setbeamertemplate{footline}{}
+  \setbeamertemplate{headline}{}
+  \setbeamertemplate{navigation symbols}{}
+  \@nameuse{ps@uuslides}}
+\setbeamertemplate{title page}{%
+    \thispagestyle{uuslides@titlepage}
+    \begingroup
+    \hskip-\beamer@leftmargin
+    \begin{minipage}[c]{0.35\linewidth}
+      \hfuzz=\maxdimen
+      \hbadness=100000
+      \includegraphics[scale=0.4]{\@titlelogopath}
+    \end{minipage}
+    \begin{minipage}[c]{0.55\linewidth}
+        \tiny
+        \begin{center}
+       \insertheadline
+     \end{center}
+   \end{minipage}
+   \hfill
+    \begin{minipage}[c]{0.1\linewidth}
+      \hfuzz=\maxdimen
+      \hbadness=100000
+      \begin{tabular}{r}
+          \tiny
+          \insertdate
+        \end{tabular}
+    \end{minipage}
+   \endgroup
+   \vfill
+   \begin{center}
+   \begingroup
+   \begin{minipage}[c][5cm][c]{0.6\paperwidth}
+     \centering
+     {\usebeamerfont{title}\inserttitle\par}%
+     \ifx\insertsubtitle\@empty%
+       \relax
+     \else%
+       \vskip0.25em%
+       {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+     \fi     
+   \end{minipage}
+   \endgroup
+   \vfill
+   \begingroup
+   \begin{minipage}[c][1cm][c]{0.4\paperwidth}
+     \centering
+     \begingroup
+     \usebeamerfont{author}\insertauthor
+     \endgroup
+     \par
+     \begingroup
+     \usebeamerfont{institute}\insertinstitute
+     \endgroup
+   \end{minipage}
+   \endgroup
+   \end{center}
+   \setcounter{framenumber}{0}
+ }
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{theorem begin}{%
+    \begin{\inserttheoremblockenv}{%
+      \inserttheoremname
+      \inserttheoremnumber
+      \ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
+      \inserttheorempunctuation
+      \vskip0.5\baselineskip
+    }
+  }
+\setbeamertemplate{theorem end}{%
+    \vskip0.5\baselineskip
+    \end{\inserttheoremblockenv}
+  }
+\setbeamertemplate{proof begin}
+{\begin{block}{\emph{\insertproofname}\vskip0.5\baselineskip}}
+\AtEndDocument{%
+  \if@nodisclaimer
+    \relax
+  \else
+    \begin{frame}
+      \thispagestyle{uuslides@disclaimer}
+      \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=uu-yellow] (current page.south west) rectangle
+      (current page.north east);
+      \end{tikzpicture}%
+      \vfill
+      \begin{center}
+        \@print@payoff
+        \ifx\insertdisclaimer\@empty%
+          \relax
+        \else%
+        \makebox{%
+          \begin{minipage}{0.6\paperwidth}%
+            \begin{flushleft}
+              \insertdisclaimer
+            \end{flushleft}
+          \end{minipage}
+        }
+        \vskip-0.5\baselineskip
+        \rule{0.6\paperwidth}{0.5pt}
+        \par
+        \ifx\partnerlogos\@empty
+          \relax
+        \else
+        \vskip0.5\baselineskip
+        \makebox[0.6\paperwidth][c]{%
+          \index=1
+          \advance\partnerlogocount 1
+          \loop%
+          \expandafter\@addtotoks\expandafter{%
+          \includegraphics[width=0.15\paperwidth]}{\@logotoks}%
+          \expandafter\@addtotoks\expandafter{%
+          \csname partnerlogo\number\index\endcsname}{\@logotoks}%
+          \@test=\index%
+          \divide\@test 3%
+          \multiply\@test 3%
+          \advance \@test -\index%
+          \ifnum \@test=0%
+            \@addtotoks{\\}{\@logotoks}%
+          \else%
+            \@addtotoks{&}{\@logotoks}%
+          \fi
+          \advance\index 1
+          \ifnum \index <\partnerlogocount
+            \repeat
+
+            \begin{tabular}{c  c  c }
+              \the\@logotoks
+            \end{tabular}
+          }
+        \fi
+        \vfill
+        \fi     
+      \end{center}
+    \end{frame}
+  \fi
+}
+\mode
+<all>
