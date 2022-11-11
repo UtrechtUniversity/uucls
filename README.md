@@ -26,20 +26,18 @@ Please note the following things:
   - `graphicx` for the logos and signatures
    
 The easiest way to install the packages is to use `git clone` somewhere in your TDS.
-If you're on MacOS/Linux, you can use the shell script included in the project to install the project by typing the following into your command line:
+You can also download the [source](https://github.com/UtrechtUniversity/uucls/archive/refs/heads/main.zip) and copy it manually where it needs to be.
+If you're on MacOS/Linux, you can use the shell script included in the project to install the project by typing the following into your command line (requires a working internet connection):
 
 ``` shell
 
-  git clone https://github.com/UtrechtUniversity/uucls.git && ./uucls/lib/scripts/uucls.sh install
+curl -fsSL https://raw.githubusercontent.com/UtrechtUniversity/uucls/main/lib/scripts/uucls.sh | /usr/bin/env bash -s -- install
 
 ```
 
-**Note**: You can `rm -rf uucls` afterwards to delete the cloned repo (it was cloned just for the install anyways).
-A nicer `curl` implementation is currently not possible since this is an internal repo.
-
 Before you do this, please inspect the script under `lib/script/uucls.sh` (as a matter of principle, don't just run scripts from the internet).
 It assumes that you have `git` and either MacTeX or TeXlive installed.
-The script will `git clone` the package into your TDS and install itself as a command line utility for updating and uninstalling the script.
+The script will `git clone` the package into your TDS and install itself as a command line utility for updating and uninstalling the script. After having installed the package, you can use `uucls` in the command line to manage the package.
 
 ## Contributing
 
