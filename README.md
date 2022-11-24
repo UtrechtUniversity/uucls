@@ -45,7 +45,7 @@ following into your command line (requires a working internet connection):
 
 ``` shell
 
-curl -fsSL https://raw.githubusercontent.com/UtrechtUniversity/uucls/main/lib/scripts/uucls.sh | /usr/bin/env bash -s -- install
+/usr/bin/env bash <(curl -fsSL https://raw.githubusercontent.com/UtrechtUniversity/uucls/main/lib/scripts/uucls.sh) install 
 
 ```
 
