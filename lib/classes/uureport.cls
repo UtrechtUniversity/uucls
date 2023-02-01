@@ -209,14 +209,25 @@
       \thepage\hfill\@date\quad\@print@version}}
   \def\@oddhead{%
     \raisebox{0.5\headheight}{\parbox{\linewidth}{%
-        \small\@title\hfill \@uuname, \@subsender}}}
+        \small\@title\hfill \@uuname%
+        \ifx\@subsender\@empty%
+          \relax%
+        \else%
+          , \@subsender
+        \fi}}}
   \if@twoside
     \def\@evenfoot{%
       \parbox[b]{0.5\linewidth}{%
         \@date\quad\@print@version}\hfill\thepage\rule{0.5\linewidth}{0pt}}
     \def\@evenhead{%
       \raisebox{0.5\headheight}{\parbox{\linewidth}{%
-          \small \@uuname, \@subsender\hfill\@title}}}
+          \small \@uuname%
+          \ifx\@subsender\@empty%
+            \relax%
+          \else%
+          , \@subsender%
+          \fi%
+          \hfill\@title}}}
   \else
     \let\@evenfoot\@oddfoot
     \let\@evenhead\@oddhead
