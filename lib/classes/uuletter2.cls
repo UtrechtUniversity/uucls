@@ -2,7 +2,7 @@
 %
 % A simple letter class for UU letters.
 %
-% Copyright 2021, J. Korbmacher (j.korbmacher@uu.nl)
+% Copyright 2023, J. Korbmacher (j.korbmacher@uu.nl)
 %
 % DISCLAIMER
 %
@@ -11,7 +11,7 @@
 % third parties without permission granted in advance.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uuletter2}[2021/09/10 v1.0]
+\ProvidesClass{uuletter2}[2023/06/09 v1.1]
 \newif\if@dutch
 \newif\if@opensans
 \newif\if@merriweather
@@ -286,16 +286,25 @@
   \else
   \@website
   \fi}
+\providecommand*{\input@path}{}
+\newcommand{\IfImageExists}[3]{%
+  \begingroup
+  \ifdefined\Ginput@path
+    \edef\input@path{\input@path\Ginput@path}%
+  \fi
+  \IfFileExists{#1}{#2}{#3}%
+  \endgroup
+}
 \newcommand{\@printsignature}{%
   \if@signature
-  \IfFileExists{\@sigpath}{\includegraphics[width=3.5cm]{\@sigpath}\\}{%
+  \IfImageExists{\@sigpath}{\includegraphics[width=3.5cm]{\@sigpath}\\}{%
     \fbox{Warning! Signature not found}\\
   \ClassWarning{uuletter2}{You selected \protect\withsignature\space
     but LateX couldn't locate the signature.}}
   \else
   \fi}
 \newcommand{\@print@logo}{%
-    \IfFileExists{\@logopath}{\includegraphics{\@logopath}}{%
+    \IfImageExists{\@logopath}{\includegraphics{\@logopath}}{%
       \fbox{Warning! Logo not found.}
       \ClassWarning{uuletter2}{Couldn't locate the logo file. Put
         it somewhere where LaTeX can find it.}}}
