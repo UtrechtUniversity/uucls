@@ -1,6 +1,6 @@
 % uureport.cls
 %
-% Copyright 2021, J. Korbmacher (j.korbmacher@uu.nl)
+% Copyright 2023, J. Korbmacher (j.korbmacher@uu.nl)
 %
 % DISCLAIMER
 %
@@ -9,7 +9,7 @@
 % third parties without permission granted in advance.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uureport}[2021/09/08 v1.0]
+\ProvidesClass{uureport}[2023/06/09 v1.1]
 
 % Some conditionals for later options
 
@@ -500,23 +500,19 @@
 
 %%%%% Internal commands to print layout
 
-% \newcommand{\@print@logo}{%
-%   \begin{minipage}[b][\@logoheight][t]{\@logowidth}
-%   \if@dutch
-%     \IfFileExists{UU_logo_2021_NL_RGB}{\includegraphics{UU_logo_2021_NL_RGB}}{%
-%       \fbox{Warning! Logo not found.}
-%       \ClassWarning{uudoc}{Couldn't locate the Dutch logo file. Put
-%         it somewhere where LaTeX can find it.}}
-%   \else
-%     \IfFileExists{UU_logo_2021_EN_RGB}{\includegraphics{UU_logo_2021_EN_RGB}}{%
-%       \fbox{Warning! Logo not found.}
-%       \ClassWarning{uudoc}{Couldn't locate the English logo file. Put
-%       it somewhere where LaTeX can find it.}}
-%   \fi
-% \end{minipage}}
+\providecommand*{\input@path}{}
+
+\newcommand{\IfImageExists}[3]{%
+  \begingroup
+  \ifdefined\Ginput@path
+    \edef\input@path{\input@path\Ginput@path}%
+  \fi
+  \IfFileExists{#1}{#2}{#3}%
+  \endgroup
+}
 
 \newcommand{\@print@logo}{%
-    \IfFileExists{\@logopath}{\includegraphics{\@logopath}}{%
+    \IfImageExists{\@logopath}{\includegraphics{\@logopath}}{%
       \fbox{Warning! Logo not found.}
       \ClassWarning{uuletter2}{Couldn't locate the logo file. Put
         it somewhere where LaTeX can find it.}}}

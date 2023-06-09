@@ -1,6 +1,6 @@
 % uubeamer - Outer theme
 %
-% Copyright 2022, J. Korbmacher (j.korbmacher@uu.nl)
+% Copyright 2023, J. Korbmacher (j.korbmacher@uu.nl)
 %
 % DISCLAIMER
 %
@@ -43,20 +43,29 @@
 \else
   \renewcommand{\@payoffpath}{UU_logo_2021_EN_BLACK_payoff.png}
 \fi
+\providecommand*{\input@path}{}
+\newcommand{\IfImageExists}[3]{%
+  \begingroup
+  \ifdefined\Ginput@path
+    \edef\input@path{\input@path\Ginput@path}%
+  \fi
+  \IfFileExists{#1}{#2}{#3}%
+  \endgroup
+}
 \newcommand{\@print@logo}{%
-    \IfFileExists{\@logopath}{\includegraphics{\@logopath}}{%
+    \IfImageExists{\@logopath}{\includegraphics{\@logopath}}{%
       \fbox{Warning! Logo not found.}
       \ClassWarning{uubeamer}{Couldn't locate the logo file. Put
         it somewhere where LaTeX can find it.}}
       }
 \newcommand{\@print@titlelogo}{%
-  \IfFileExists{\@titlelogopath}{\includegraphics[width=.5\linewidth]{\@titlelogopath}}{%
+  \IfImageExists{\@titlelogopath}{\includegraphics[width=.5\linewidth]{\@titlelogopath}}{%
       \fbox{Warning! Logo not found.}
       \ClassWarning{uubeamer}{Couldn't locate the logo file. Put
         it somewhere where LaTeX can find it.}}
       }
 \newcommand{\@print@payoff}{%
-  \IfFileExists{\@payoffpath}{\includegraphics[scale=0.5]{\@payoffpath}}{%
+  \IfImageExists{\@payoffpath}{\includegraphics[scale=0.5]{\@payoffpath}}{%
       \fbox{Warning! Payoff not found.}
       \ClassWarning{uubeamer}{Couldn't locate the logo file. Put
         it somewhere where LaTeX can find it.}}
