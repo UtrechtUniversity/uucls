@@ -322,7 +322,7 @@ _main_() {
 	fi
 
 	echo "uuclasses - latex classes for the UU house style"
-	echo "Copyright 2021 J. Korbmacher, j.korbmacher@uu.nl"
+	echo "Written in 2023 by J. Korbmacher, j.korbmacher@uu.nl"
 
 	if [[ $COMMAND == "install" ]] || [[ $COMMAND == "script" ]]; then
 		_check_for_dependencies_
