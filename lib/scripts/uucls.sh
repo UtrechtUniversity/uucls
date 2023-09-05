@@ -317,12 +317,14 @@ EOF
 
 _main_() {
 
-	_warning_
+	if ! [[ $COMMAND == "script" ]]; then
+		_warning_
+	fi
 
 	echo "uuclasses - latex classes for the UU house style"
 	echo "Copyright 2021 J. Korbmacher, j.korbmacher@uu.nl"
 
-	if [[ $COMMAND == "install" ]]; then
+	if [[ $COMMAND == "install" ]] || [[ $COMMAND == "script" ]]; then
 		_check_for_dependencies_
 		_install_
 	elif [[ $COMMAND == "update" ]]; then
