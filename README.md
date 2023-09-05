@@ -68,7 +68,7 @@ in touch via my UU email.
 
 This software was originally written by Johannes Korbmacher
 ([j.korbmacher@uu.nl](mailto:j.korbmacher@uu.nl)) and contains contributions
-from Ty Mees ([t.d.mees@uu.nl](mailto:t.d.mees@uu.nl)) and Kevin Quach.
+from Ty Mees ([t.d.mees@uu.nl](mailto:t.d.mees@uu.nl)) and Keven Quach.
 
 To the extent possible under law, the authors have dedicated all copyright and
 related and neighboring rights to this software to the public domain worldwide.
