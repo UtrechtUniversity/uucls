@@ -21,7 +21,3 @@ update: updates the packages by pulling from GitHub
 ```
 
 Please inspect before executing. There's no warranty of any kind.
-
-## LICENSE
-
-This script is made available under the terms and conditions of the MIT License (see `LICENSE`).
