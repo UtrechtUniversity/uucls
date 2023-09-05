@@ -1,6 +1,12 @@
 % uureport.cls
 %
-% Copyright 2023, J. Korbmacher (j.korbmacher@uu.nl)
+% Written by J. Korbmacher (j.korbmacher@uu.nl) in 2023.
+%
+% To the extent possible under law, the author(s) have dedicated all copyright
+% and related and neighboring rights to this software to the public domain
+% worldwide. This software is distributed without any warranty.
+%
+% https://github.com/UtrechtUniversity/uucls
 %
 % DISCLAIMER
 %

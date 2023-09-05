@@ -60,8 +60,26 @@ you can use `uucls` in the command line to manage the package.
 
 Initially, I created these classes for my personal use. I'm sharing them here in
 the hope that this perhaps saves some of you the work creating your own files.
-I'm very happy about PRs and/or comments. Ideally, raise an issue or just get in
-touch via my UU email.
+I'm very happy about PRs and/or comments, but you'll need to be OK with the
+CC0/public domain dedication (see below).  Ideally, raise an issue or just get
+in touch via my UU email.
+
+## (Un)License
+
+This software was originally written by Johannes Korbmacher
+([j.korbmacher@uu.nl](mailto:j.korbmacher@uu.nl)) and contains contributions
+from Ty Mees ([t.d.mees@uu.nl](mailto:t.d.mees@uu.nl)) and Kevin Quach.
+
+To the extent possible under law, the authors have dedicated all copyright and
+related and neighboring rights to this software to the public domain worldwide.
+This software is distributed without any warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication along with
+this software (```LICENSE```). If not, see
+[http://creativecommons.org/publicdomain/zero/1.0/].
+
+Of course, this applies only to the software written by us, and, in particular,
+not the branding (see below).
 
 ## Disclaimer
 
