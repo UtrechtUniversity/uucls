@@ -462,6 +462,9 @@
   \parskip\z@
 
   \@starttoc{toc}%
+
+  % Reset parskip so it doesn't affect the rest of the document
+  \parskip\@leading 
 }
 \renewcommand*\l@part[2]{%
   \ifnum \c@tocdepth >-2\relax
